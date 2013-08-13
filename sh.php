@@ -1,7 +1,8 @@
 <?php
     
 ini_set( 'display_error', 1 );  // Show error message.
-require_once( '.libs/Smarty.class.php' );
+require_once( './libs/Smarty.class.php' );
+$smarty = new Smarty();
 
 /*
 ゲットで変数が来ているかどうかチェック
@@ -12,43 +13,43 @@ require_once( '.libs/Smarty.class.php' );
    mode=shurl で shurl を受け取ったと解釈
 */
 
-   if( isset( $_GET['mode'] )){
-       if( $_GET['mode'] == 'gen' ){
-           $mode = $_GET['mode'];           
-       } elseif( $_GET['mode'] == 'error' ){
-           $mode = $_GET['mode'];
-        } elseif( $_GET['mode'] == 'shurl' ){
-           $mode = $_GET['mode'];
-       }
-   } else {
-       $mode = "first";
-   }
+if( isset( $_GET['mode'] )){
+    if( $_GET['mode'] == 'gen' ){
+        $mode = $_GET['mode'];           
+    } elseif( $_GET['mode'] == 'error' ){
+        $mode = $_GET['mode'];
+    } elseif( $_GET['mode'] == 'shurl' ){
+        $mode = $_GET['mode'];
+    }
+} else {
+    $mode = "first";
+}
 
-   include( "header.inc" );
+$smarty->display( 'header.tbl' );
 
 
-   if ( $mode == 'first' ){
-       echo 'first time.';
+if ( $mode == 'first' ){
+    echo 'first time.';
 
-   } elseif( $mode == 'gen' ){
-       $org_url = $_GET['org_url'];
-       $shchar = $_GET['shurl'];
-       $cutoff = $_GET['cutoff'];
-       print( 'gen mode' );
-       
-   } elseif ( $mode == 'shurl' ){
-       $shchar = $_GET['shurl'];
-       print( 'shurl mode.' );
+} elseif( $mode == 'gen' ){
+    $org_url = $_GET['org_url'];
+    $shchar = $_GET['shurl'];
+    $cutoff = $_GET['cutoff'];
+    print( 'gen mode' );
 
-   } elseif( $mode == 'error' ){
-       $org_url = $_GET['org_url'];
-       $shchar = $_GET['shurl'];
-       $cutoff = $_GET['cutoff'];
-       print( 'error mode' );
+} elseif ( $mode == 'shurl' ){
+    $shchar = $_GET['shurl'];
+    print( 'shurl mode.' );
 
-   }
+} elseif( $mode == 'error' ){
+    $org_url = $_GET['org_url'];
+    $shchar = $_GET['shurl'];
+    $cutoff = $_GET['cutoff'];
+    print( 'error mode' );
 
-   include( "footer.inc" );
+}
+
+$smarty->display( 'footer.tbl' );
 
 
 /*
