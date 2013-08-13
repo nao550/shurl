@@ -1,4 +1,8 @@
 <?php
+    
+ini_set( 'display_error', 1 );  // Show error message.
+require_once( '.libs/Smarty.class.php' );
+
 /*
 ゲットで変数が来ているかどうかチェック
  変数がなければ標準画面
@@ -22,7 +26,11 @@
 
    include( "header.inc" );
 
-   if( $mode == 'gen' ){
+
+   if ( $mode == 'first' ){
+       echo 'first time.';
+
+   } elseif( $mode == 'gen' ){
        $org_url = $_GET['org_url'];
        $shchar = $_GET['shurl'];
        $cutoff = $_GET['cutoff'];
@@ -31,9 +39,6 @@
    } elseif ( $mode == 'shurl' ){
        $shchar = $_GET['shurl'];
        print( 'shurl mode.' );
-
-   } elseif ( $mode == 'first' ){
-       echo 'first time.';
 
    } elseif( $mode == 'error' ){
        $org_url = $_GET['org_url'];
