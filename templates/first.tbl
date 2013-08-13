@@ -1,0 +1,24 @@
+
+   <div id="body">
+     <div id="header">
+       <h1>短縮URL生成</h1>
+     </div>
+
+     <div class="main">
+       <form method="GET" action="#" >
+	 <dl>
+	   <dt>短縮URL</dt>
+	   <dd><input type="text" name="org_url" size="50" {$org_url} /></dd>
+	   <dt>希望文字</dt>
+	   <dd><input type="text" name="shchar" size="10" {$shchar} /></dd>
+	 </dl>
+	 <input type="hidden" name="mode" value="gen" />
+	 <input type="submit" value="短縮URL生成" />
+	 <input type="reset" value="取り消し" />
+       </form>
+     </div>
+   </div>
+
+
+
+   
