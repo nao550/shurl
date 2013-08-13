@@ -50,12 +50,18 @@ mod_rerwite を使用してアクセスされたURLから短縮部をとりだ�
 ===========
 
 dat class
+
 dat_add
+
 dat_get
+
 dat_del
+
 dat_daychk
+
 dat_getall
- 
+
+dat_gensh 
 
 
 
