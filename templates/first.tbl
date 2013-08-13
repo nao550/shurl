@@ -9,8 +9,15 @@
 	 <dl>
 	   <dt>短縮URL</dt>
 	   <dd><input type="text" name="org_url" size="50" {$org_url} /></dd>
+	   {if isset($err_url)}
+	     <dd>{$err_url}</dd>
+	   {/if}
 	   <dt>希望文字</dt>
 	   <dd><input type="text" name="shchar" size="10" {$shchar} /></dd>
+	   <dd>{$minchar}文字以上の文字を入れてください。</dd>
+	   {if isset($err_shchar)}
+	     <dd>{$err_shchar}</dd>
+	   {/if}
 	 </dl>
 	 <input type="hidden" name="mode" value="gen" />
 	 <input type="submit" value="短縮URL生成" />

@@ -1,16 +1,17 @@
 <?php
-    
 ini_set( 'display_error', 1 );  // Show error message.
+
+require( './config.php' );
 require_once( './libs/Smarty.class.php' );
 $smarty = new Smarty();
 
 /*
-¥²¥Ã¥È¤ÇÊÑ¿ô¤¬Íè¤Æ¤¤¤ë¤«¤É¤¦¤«¥Á¥§¥Ã¥¯
- ÊÑ¿ô¤¬¤Ê¤±¤ì¤ĞÉ¸½à²èÌÌ
- ÊÑ¿ô¤¬¤¢¤ì¤ĞÊÑ¿ô¤ò¥Á¥§¥Ã¥¯
-   mode=gen ¤Ç shurl À¸À®²èÌÌ
-   mode=error ¤Ç¥¨¥é¡¼È¯À¸¤·¤¿¤Î¤ÇºÆÆşÎÏ²èÌÌ
-   mode=shurl ¤Ç shurl ¤ò¼õ¤±¼è¤Ã¤¿¤È²ò¼á
+ã‚²ãƒƒãƒˆã§å¤‰æ•°ãŒæ¥ã¦ã„ã‚‹ã‹ã©ã†ã‹ãƒã‚§ãƒƒã‚¯
+ å¤‰æ•°ãŒãªã‘ã‚Œã°æ¨™æº–ç”»é¢
+ å¤‰æ•°ãŒã‚ã‚Œã°å¤‰æ•°ã‚’ãƒã‚§ãƒƒã‚¯
+   mode=gen ã§ shurl ç”Ÿæˆç”»é¢
+   mode=error ã§ã‚¨ãƒ©ãƒ¼ç™ºç”Ÿã—ãŸã®ã§å†å…¥åŠ›ç”»é¢
+   mode=shurl ã§ shurl ã‚’å—ã‘å–ã£ãŸã¨è§£é‡ˆ
 */
 
 if( isset( $_GET['mode'] )){
@@ -25,50 +26,75 @@ if( isset( $_GET['mode'] )){
     $mode = "first";
 }
 
-$smarty->display( 'header.tbl' );
-
 if ( $mode == 'first' ){
     /*
-      É¸½à²èÌÌ¤ÎÉ½¼¨
-      À¸À®¥Ü¥¿¥ó ¤Ç org_url¡¢shchar¡¢cutoff¡¢¤òGET¤ÇÁ÷¤ë
+      æ¨™æº–ç”»é¢ã®è¡¨ç¤º
+      ç”Ÿæˆãƒœã‚¿ãƒ³ ã§ org_urlã€shcharã€cutoffã€ã‚’GETã§é€ã‚‹
     */
+    $smarty->display( 'header.tbl' );
+    $smarty->assign( 'minchar', MINSHCHAR );
     $smarty->assign( 'org_url', '' );
     $smarty->assign( 'shchar', '' );
     $smarty->display( 'first.tbl' );
 
 
 } elseif( $mode == 'gen' ){
-    /*urlÀ¸À®²èÌÌ
-      shchar ¤ÎÍ­Ìµ¥Á¥§¥Ã¥¯
-      shchar ¤¢¤ì¤Ğ
-      shchar ¤ÎÄ¹¤µ¥Á¥§¥Ã¥¯
-      ¥¨¥é¡¼¤Ç mode=error ¤ÇÌá¤¹
-      shchar ¤Ê¤±¤ì¤Ğ¡¢org_url,time ¤è¤ê hash ¤Ç shchar À¸À®
+    /*
+      urlç”Ÿæˆç”»é¢
+      shchar ã®æœ‰ç„¡ãƒã‚§ãƒƒã‚¯
+      shchar ã‚ã‚Œã°
+      shchar ã®é•·ã•ãƒã‚§ãƒƒã‚¯
+      ã‚¨ãƒ©ãƒ¼ã§ mode=error ã§æˆ»ã™
+      shchar ãªã‘ã‚Œã°ã€org_url,time ã‚ˆã‚Š hash ã§ shchar ç”Ÿæˆ
 
-      org_url,shchar,day ¤ò dat ¤ØÅĞÏ¿
+      org_url,shchar,day ã‚’ dat ã¸ç™»éŒ²
 
-      shurl ¤Î²èÌÌ¤òÉ½¼¨
+      shurl ã®ç”»é¢ã‚’è¡¨ç¤º
     */
+
+    $errorflag = 0;
+    if( $_GET['org_url'] == "" ){
+        $errorflag += 1;
+    }
+    if( $_GET['shchar'] == "" ){
+        $errorflag += 1 ;
+    }
+    if( $errorflag != 0 ){
+        header('Location: ./sh.php?mode=error&org_url=' .$_GET['org_url'] . '&shchar=' . $_GET['shchar']);
+    }
 
     $org_url = $_GET['org_url'];
     $shchar = $_GET['shchar'];
     print( 'gen mode' );
 
 } elseif ( $mode == 'shurl' ){
-    /*shurl ¤ò¼õ¤±¼è¤Ã¤¿
-      GET ¤Ç shchar ¤ò¼è¤ê½Ğ¤·
-      shchar ¤Ç dat ¤ò¸¡º÷
-      dat ¤Ë¤Ê¤ì¤Ğ¥¨¥é¡¼²èÌÌ
-      dat ¤Ë¤¢¤ì¤Ğ location  hoge¤Ç°ÜÆ°
+    /*
+      shurl ã‚’å—ã‘å–ã£ãŸ
+      GET ã§ shchar ã‚’å–ã‚Šå‡ºã—
+      shchar ã§ dat ã‚’æ¤œç´¢
+      dat ã«ãªã‚Œã°ã‚¨ãƒ©ãƒ¼ç”»é¢
+      dat ã«ã‚ã‚Œã° location  hogeã§ç§»å‹•
     */
 
     $shchar = $_GET['shurl'];
     print( 'shurl mode.' );
 
 } elseif( $mode == 'error' ){
-    $org_url = $_GET['org_url'];
-    $shchar = $_GET['shurl'];
-    $cutoff = $_GET['cutoff'];
+    /*
+      ã‚¨ãƒ©ãƒ¼ãƒã‚§ãƒƒã‚¯
+    */
+    $smarty->display( 'header.tbl' );
+    if( $_GET['org_url'] == '' ){
+        $smarty->assign( 'err_url', '<div class="error">URLã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚</div>');
+    }
+    if( $_GET['shchar'] == '' ){
+        $smarty->assign( 'err_shchar', '<div class="error">æ–‡å­—åˆ—ãŒçŸ­ã™ãã¾ã™ã€‚</div>');
+    }
+    $smarty->assign( 'minchar', MINSHCHAR );
+    $smarty->assign( 'org_url', ' value="'. $_GET['org_url'] .'"' );
+    $smarty->assign( 'shchar', ' value="'. $_GET['shchar'] . '"');
+    $smarty->display( 'first.tbl' );
+    
     print( 'error mode' );
 
 }
