@@ -2,6 +2,7 @@
 ini_set( 'display_error', 1 );  // Show error message.
 
 require( './config.php' );
+require( './datclass.inc' );
 require_once( './libs/Smarty.class.php' );
 $smarty = new Smarty();
 
@@ -37,7 +38,7 @@ if ( $mode == 'first' ){
     $smarty->assign( 'shchar', '' );
     $smarty->display( 'first.tbl' );
 
-
+    print('<!-- first mode -->');
 } elseif( $mode == 'gen' ){
     /*
       url生成画面
@@ -56,7 +57,7 @@ if ( $mode == 'first' ){
     if( $_GET['org_url'] == "" ){
         $errorflag += 1;
     }
-    if( $_GET['shchar'] == "" ){
+    if( $_GET['shchar'] != '' && strlen($_GET['shchar']) < MINSHCHAR ){
         $errorflag += 1 ;
     }
     if( $errorflag != 0 ){
@@ -65,8 +66,8 @@ if ( $mode == 'first' ){
 
     $org_url = $_GET['org_url'];
     $shchar = $_GET['shchar'];
-    print( 'gen mode' );
 
+    print( '<!-- gen mode  -->' );
 } elseif ( $mode == 'shurl' ){
     /*
       shurl を受け取った
@@ -77,8 +78,9 @@ if ( $mode == 'first' ){
     */
 
     $shchar = $_GET['shurl'];
-    print( 'shurl mode.' );
 
+
+    print( '<!-- shurl mode. -->' );
 } elseif( $mode == 'error' ){
     /*
       エラーチェック
@@ -87,16 +89,16 @@ if ( $mode == 'first' ){
     if( $_GET['org_url'] == '' ){
         $smarty->assign( 'err_url', '<div class="error">URLを入力してください。</div>');
     }
-    if( $_GET['shchar'] == '' ){
+    if( $_GET['shchar'] != '' &&  strlen($_GET['shchar']) < MINSHCHAR ){
         $smarty->assign( 'err_shchar', '<div class="error">文字列が短すぎます。</div>');
     }
     $smarty->assign( 'minchar', MINSHCHAR );
     $smarty->assign( 'org_url', ' value="'. $_GET['org_url'] .'"' );
     $smarty->assign( 'shchar', ' value="'. $_GET['shchar'] . '"');
     $smarty->display( 'first.tbl' );
-    
-    print( 'error mode' );
 
+
+    print( '<!-- error mode -->' ); 
 }
 
 $smarty->display( 'footer.tbl' );
