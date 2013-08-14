@@ -17,7 +17,7 @@ $smarty = new Smarty();
 
 if( isset( $_GET['mode'] )){
     if( $_GET['mode'] == 'gen' ){
-        $mode = $_GET['mode'];           
+        $mode = $_GET['mode'];
     } elseif( $_GET['mode'] == 'error' ){
         $mode = $_GET['mode'];
     } elseif( $_GET['mode'] == 'shurl' ){
@@ -54,7 +54,7 @@ if ( $mode == 'first' ){
     */
 
     $errorflag = 0;
-    if( $_GET['org_url'] == "" ){
+    if( $_GET['org_url'] == '' ){
         $errorflag += 1;
     }
     if( $_GET['shchar'] != '' && strlen($_GET['shchar']) < MINSHCHAR ){
@@ -64,8 +64,26 @@ if ( $mode == 'first' ){
         header('Location: ./sh.php?mode=error&org_url=' .$_GET['org_url'] . '&shchar=' . $_GET['shchar']);
     }
 
-    $org_url = $_GET['org_url'];
-    $shchar = $_GET['shchar'];
+    if( $_GET['shchar'] == '' ){
+        $shchar = hash( 'crc32', $_GET['shchar']); // crc32 は8文字にハッシュ
+    } else {
+        $shchar = $_GET['shchar'];
+    }
+
+
+    $datfile = new DatFile;
+
+    $datfile->setData( $shchar, $_GET['org_url'] );
+
+    $shurl = BASEURL . $shchar;
+    $smarty->display( 'header.tbl' );
+    $smarty->assign( 'minchar', MINSHCHAR );
+    $smarty->assign( 'org_url', $_GET['org_url'] );
+    $smarty->assign( 'shchar', $shchar );
+    $smarty->assign( 'shurl', $shurl );
+    $smarty->display( 'first.tbl' );
+
+
 
     print( '<!-- gen mode  -->' );
 } elseif ( $mode == 'shurl' ){
@@ -93,8 +111,8 @@ if ( $mode == 'first' ){
         $smarty->assign( 'err_shchar', '<div class="error">文字列が短すぎます。</div>');
     }
     $smarty->assign( 'minchar', MINSHCHAR );
-    $smarty->assign( 'org_url', ' value="'. $_GET['org_url'] .'"' );
-    $smarty->assign( 'shchar', ' value="'. $_GET['shchar'] . '"');
+    $smarty->assign( 'org_url', $_GET['org_url'] );
+    $smarty->assign( 'shchar',  $_GET['shchar'] );
     $smarty->display( 'first.tbl' );
 
 
