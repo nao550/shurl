@@ -5,14 +5,25 @@ URL短縮プログラム
 mod_rerwite を使用してアクセスされたURLから短縮部をとりだし、それをキーにして登録されたURLへ転送する
 
 
+mod_rewrite を使用して、
+
+http://www.example.com/xxxxxx
+
+でアクセスがあった場合にスクリプトへ転送する設定にする。
+
+.htaccess に以下のように記述する。
+
 ::
 
   RewriteEngine On
-  RewriteBase /
-  RewriteRule ^(.+)/(.+)/(.+)$ $1.php?mode=$2&id=$3
+  RewriteBase /~nao/shurl/
+  RewriteRule ^sh.php - [L]
+  RewriteRule ^(.+)$ /~nao/shurl/sh.php?mode=shurl&shchar=$1
 
 
-　これは冒頭でお話しした、Webアプリケーションを静的ページ風のURLで動作させるための書き換え例です。正規表現内の（）で囲まれた部分を、書き換え後URLで $1、$2、$3……のようにして順番に参照することができます。上記の例では 例えば“/test/edit/123”は、“test.php?mode=edit&id=123”のように書き換えられます。
+3行目でURLに sh.php の文字列が含まれる場合にさらに転送をしない設定を入れる。
+これをいれないと、4行目で延々とループすることになる。
+
 
 
 .. code-block:: PHP

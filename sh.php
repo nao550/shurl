@@ -67,13 +67,14 @@ if ( $mode == 'first' ){
     }
 
     if( $_GET['shchar'] == '' ){
-        $shchar = hash( 'crc32', $_GET['org_url'] . time() ); // crc32 は8文字にハッシュ
+        $shchar = hash( 'crc32', $_GET['org_url'] ); // crc32 は8文字にハッシュ
     } else {
         $shchar = $_GET['shchar'];
     }
 
 
     $datfile = new DatFile;
+
 
     $datfile->setData( $shchar, $_GET['org_url'] );
 
