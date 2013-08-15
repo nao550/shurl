@@ -20,10 +20,9 @@
 	   {/if}
 	   {if isset($shurl)}
 	     <dt>短縮URL</dt>
-	     <dd><input type="text" name="shurl" size="50" value="{$shurl}" /></dd>
+	     <dd><a href="{$shurl}" />{$shurl}</a></dd>
 	     </dt>
 	   {/if}
-	   <dd>
 	 </dl>
 	 <input type="hidden" name="mode" value="gen" />
 	 <input type="submit" value="短縮URL生成" />

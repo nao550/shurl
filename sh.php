@@ -22,6 +22,8 @@ if( isset( $_GET['mode'] )){
         $mode = $_GET['mode'];
     } elseif( $_GET['mode'] == 'shurl' ){
         $mode = $_GET['mode'];
+    } else {
+        $mode = 'shurl';
     }
 } else {
     $mode = "first";
@@ -65,7 +67,7 @@ if ( $mode == 'first' ){
     }
 
     if( $_GET['shchar'] == '' ){
-        $shchar = hash( 'crc32', $_GET['shchar']); // crc32 は8文字にハッシュ
+        $shchar = hash( 'crc32', $_GET['org_url'] . time() ); // crc32 は8文字にハッシュ
     } else {
         $shchar = $_GET['shchar'];
     }
@@ -95,10 +97,17 @@ if ( $mode == 'first' ){
       dat にあれば location  hogeで移動
     */
 
-    $shchar = $_GET['shurl'];
+    $datfile = new DatFile;
 
+    $org_url = $datfile->GetURL( $_GET['shchar'] );
 
-    print( '<!-- shurl mode. -->' );
+    if( $org_url == '' ){
+        $smarty->display( 'header.tbl' );
+        print( $_GET['shchar'] . "で設定されたURLはありません。" );
+    } else {
+        header( 'Location', $org_url );
+    }
+
 } elseif( $mode == 'error' ){
     /*
       エラーチェック
