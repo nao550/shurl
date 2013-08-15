@@ -75,6 +75,9 @@ if ( $mode == 'first' ){
 
     $datfile = new DatFile;
 
+    if( is_set( $datfile->GetURL( $shchar ))){
+        // shchar が設定されているので、org_url とか表示してエラー
+    }
 
     $datfile->setData( $shchar, $_GET['org_url'] );
 

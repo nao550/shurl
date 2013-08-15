@@ -1,0 +1,10 @@
+2013-08-15  IKENO Naoki  <nao@kyo-to.net>
+
+	* sh.php (elseif): 
+	shurl 一通り完成
+
+	残り
+	shchar の寿福チェック
+	bootstrap でページの作成
+	
+
