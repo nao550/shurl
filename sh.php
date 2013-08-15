@@ -105,7 +105,8 @@ if ( $mode == 'first' ){
         $smarty->display( 'header.tbl' );
         print( $_GET['shchar'] . "で設定されたURLはありません。" );
     } else {
-        header( 'Location', $org_url );
+        header( 'Location: ' .  $org_url );
+        print( $org_url );
     }
 
 } elseif( $mode == 'error' ){
