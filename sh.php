@@ -75,8 +75,18 @@ if ( $mode == 'first' ){
 
     $datfile = new DatFile;
 
-    if( is_set( $datfile->GetURL( $shchar ))){
+    $org_url = $datfile->GetURL( $shchar );
+    if( isset( $org_url )){
         // shchar が設定されているので、org_url とか表示してエラー
+        $shurl = BASEURL . $shchar;
+        $smarty->display( 'header.tbl' );
+        $smarty->assign( 'minchar', MINSHCHAR );
+        $smarty->assign( 'org_url', $_GET['org_url'] );
+        $smarty->assign( 'shchar', $shchar );
+        $smarty->assign( 'shurl', $shurl );
+        $smarty->assign( 'err_shurl', $shchar . "は" . $org_url . "に設定されています。" );
+        $smarty->display( 'first.tbl' );
+        exit;
     }
 
     $datfile->setData( $shchar, $_GET['org_url'] );
@@ -88,8 +98,6 @@ if ( $mode == 'first' ){
     $smarty->assign( 'shchar', $shchar );
     $smarty->assign( 'shurl', $shurl );
     $smarty->display( 'first.tbl' );
-
-
 
     print( '<!-- gen mode  -->' );
 } elseif ( $mode == 'shurl' ){

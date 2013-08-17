@@ -23,6 +23,9 @@
 	     <dd><a href="{$shurl}" />{$shurl}</a></dd>
 	     </dt>
 	   {/if}
+	   {if isset($err_shurl)}
+	     <dd>{$err_shurl}</dd>
+	   {/if}
 	 </dl>
 	 <input type="hidden" name="mode" value="gen" />
 	 <input type="submit" value="短縮URL生成" />
