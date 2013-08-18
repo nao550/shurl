@@ -1,39 +1,57 @@
 
-   <div id="body">
-     <div id="header">
-       <h1>短縮URL生成</h1>
-     </div>
+   <div class="cntainer">
+     <div class="row">
+       <div class="span3"></div>
+       <div class="span6">
+       <h1 class="text-center">短縮URL生成</h1>
 
-     <div class="main">
-       <form method="GET" action="#" >
-	 <dl>
-	   <dt>短縮URL</dt>
-	   <dd><input type="text" name="org_url" size="50" value="{$org_url}" /></dd>
-	   {if isset($err_url)}
-	     <dd>{$err_url}</dd>
-	   {/if}
-	   <dt>希望文字</dt>
-	   <dd><input type="text" name="shchar" size="10" value="{$shchar}" /></dd>
-	   <dd>{$minchar}文字以上の文字を入れてください。</dd>
-	   {if isset($err_shchar)}
-	     <dd>{$err_shchar}</dd>
-	   {/if}
-	   {if isset($shurl)}
-	     <dt>短縮URL</dt>
-	     <dd><a href="{$shurl}" />{$shurl}</a></dd>
-	     </dt>
-	   {/if}
+       <form action="sh.php" method="GET">
+       <div class="form-horizontal">
+	 <div class="control-group">
+	   <label class="control-label" for="org_url">URL</label>
+	   <div class="controls">
+	     <input type="text" name="org_url" value="{$org_url}" placeholder="http://www.example.com"/>
+	     {if isset($err_url)}
+	       {$err_url}
+	     {/if}
+	   </div>
+	 </div>
+
+	 <div class="control-group">
+	   <label class="control-label" for="shchar">文字列</label>
+	   <div class="controls">
+	     <input type="text" name="shchar" value="{$shchar}" placeholder="non or over 5 character"/>
+	     {if isset($err_shchar)}
+	       {$err_shchar}
+	     {/if}
+	   </div>
+	 </div>
+
+	 {if isset($shurl)}
+	 <div class="control-group">
+	   <label class="control-label" for="shurl">短縮URL</label>
+	   <div class="controls">
+	     <a href="{$shurl}">{$shurl}</a>
+           </div>
 	   {if isset($err_shurl)}
-	     <dd>{$err_shurl}</dd>
+	   <div class="controls">
+	     {$err_shurl}
+	   </div>
 	   {/if}
-	 </dl>
-	 <input type="hidden" name="mode" value="gen" />
-	 <input type="submit" value="短縮URL生成" />
-	 <input type="reset" value="取り消し" />
+	 </div>
+	 {/if}
+
+	 <div class="control-group">
+	   <div class="controls">
+	     <input type="hidden" name="mode" value="gen" />
+	     <input type="submit" class="btn" value="短縮URL生成" />
+	     <input type="reset" class="btn" value="取り消し" />
+	   </div>
+	 </div>
        </form>
+
+       </div>
+       <div class="span3"></div>
      </div>
-   </div>
 
 
-
-   

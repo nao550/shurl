@@ -1,4 +1,5 @@
   RewriteEngine On
   RewriteBase /~nao/shurl/
   RewriteRule ^sh.php - [L]
+  RewriteRule ^css - [L]
   RewriteRule ^(.+)$ /~nao/shurl/sh.php?mode=shurl&shchar=$1

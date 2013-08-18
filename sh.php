@@ -127,10 +127,10 @@ if ( $mode == 'first' ){
     */
     $smarty->display( 'header.tbl' );
     if( $_GET['org_url'] == '' ){
-        $smarty->assign( 'err_url', '<div class="error">URLを入力してください。</div>');
+        $smarty->assign( 'err_url', '<span class="help-inline">URLを入力してください。</span>');
     }
     if( $_GET['shchar'] != '' &&  strlen($_GET['shchar']) < MINSHCHAR ){
-        $smarty->assign( 'err_shchar', '<div class="error">文字列が短すぎます。</div>');
+        $smarty->assign( 'err_shchar', '<span class="help-inline">文字列が短すぎます。</span>');
     }
     $smarty->assign( 'minchar', MINSHCHAR );
     $smarty->assign( 'org_url', $_GET['org_url'] );

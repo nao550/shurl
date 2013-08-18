@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
     <title>URL短縮</title>
-    <meta charset="UTF-8" />
-    <meta http-equiv="content-language" content="ja" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <!-- Bootstrap -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="./css/bootstrap-responsivex.min.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="base.css" />
   </head>
   <body>
-
