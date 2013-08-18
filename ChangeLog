@@ -1,10 +1,22 @@
+2013-08-18  IKENO Naoki  <nao@kyo-to.net>
+
+	* first.tbl
+	bootstrap のコードを追加、まぁいいかんじ？
+	もうちょっとレイアウトを何とかしたい。
+
+	残り
+	xss対策
+	admin.php の作成
+
+	bootstrap でもうちょとレイアウト
+
 2013-08-15  IKENO Naoki  <nao@kyo-to.net>
 
 	* sh.php (elseif): 
 	shurl 一通り完成
 
 	残り
-	shchar の寿福チェック
+	shchar の重複チェック
 	bootstrap でページの作成
 	
 
