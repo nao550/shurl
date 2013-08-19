@@ -6,5 +6,7 @@ define( 'MINSHCHAR', '5' ); // 短縮URLの最小文字列
 define( 'DATDIR', './data/' ); // データディレクトリ
 define( 'DATFILE', DATDIR . 'shurl.dat' ); // Datファイル
 
+define( 'ADMIN', 'admin' ); // 管理者ID
+define( 'PASSWD', 'pp234kk' ); //管理者パスワード
 
 ?>
