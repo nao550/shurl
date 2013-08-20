@@ -38,7 +38,7 @@ if ( $mode == 'first' ){
     $smarty->assign( 'minchar', MINSHCHAR );
     $smarty->assign( 'org_url', '' );
     $smarty->assign( 'shchar', '' );
-    $smarty->display( 'first.tbl' );
+    $smarty->display( 'body.tbl' );
 
     print('<!-- first mode -->');
 } elseif( $mode == 'gen' ){
@@ -85,7 +85,7 @@ if ( $mode == 'first' ){
         $smarty->assign( 'shchar', $shchar );
         $smarty->assign( 'shurl', $shurl );
         $smarty->assign( 'err_shurl', $shchar . "は" . $org_url . "に設定されています。" );
-        $smarty->display( 'first.tbl' );
+        $smarty->display( 'body.tbl' );
         exit;
     }
 
@@ -97,7 +97,7 @@ if ( $mode == 'first' ){
     $smarty->assign( 'org_url', $_GET['org_url'] );
     $smarty->assign( 'shchar', $shchar );
     $smarty->assign( 'shurl', $shurl );
-    $smarty->display( 'first.tbl' );
+    $smarty->display( 'body.tbl' );
 
     print( '<!-- gen mode  -->' );
 } elseif ( $mode == 'shurl' ){
@@ -135,7 +135,7 @@ if ( $mode == 'first' ){
     $smarty->assign( 'minchar', MINSHCHAR );
     $smarty->assign( 'org_url', $_GET['org_url'] );
     $smarty->assign( 'shchar',  $_GET['shchar'] );
-    $smarty->display( 'first.tbl' );
+    $smarty->display( 'body.tbl' );
 
 
     print( '<!-- error mode -->' ); 
