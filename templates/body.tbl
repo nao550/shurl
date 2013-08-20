@@ -3,7 +3,7 @@
      <div class="row">
        <div class="span3"></div>
        <div class="span6">
-       <h1 class="text-center">短縮URL生成</h1>
+       <h1 class="text-center">短縮URL</h1>
 
        <form action="sh.php" method="GET">
        <div class="form-horizontal">
@@ -18,7 +18,7 @@
 	 </div>
 
 	 <div class="control-group">
-	   <label class="control-label" for="shchar">文字列</label>
+	   <label class="control-label" for="shchar">短縮文字<label>
 	   <div class="controls">
 	     <input type="text" name="shchar" value="{$shchar}" placeholder="non or over 5 character"/>
 	     {if isset($err_shchar)}
@@ -44,8 +44,8 @@
 	 <div class="control-group">
 	   <div class="controls">
 	     <input type="hidden" name="mode" value="gen" />
-	     <input type="submit" class="btn" value="短縮URL生成" />
-	     <input type="reset" class="btn" value="取り消し" />
+	     <input type="submit" class="btn" value="生成する" />
+	     <input type="reset" class="btn" value="リセット" />
 	   </div>
 	 </div>
        </form>
