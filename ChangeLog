@@ -1,8 +1,14 @@
+2013-08-22  IKENO Naoki  <nao@kyo-to.net>
+
+	* sh.php: 
+	t:有効期限の選択ボックスを disable で作っておく
+
+	i:その他のオプション項目で、shurl が有効になる日を設定できるようにする
+
 2013-08-20  IKENO Naoki  <nao@kyo-to.net>
 
 	* sh.php (else): 
 	first.tbl -> body.tbl
-	1
 
 2013-08-18  IKENO Naoki  <nao@kyo-to.net>
 
