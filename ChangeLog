@@ -1,5 +1,8 @@
 2013-08-31  IKENO Naoki  <nao@kyo-to.net>
 
+	* sh.php: 
+	リセットボタンで、フォームデータクリアされるように設定
+
 	* .htaccess: 
 	RewriteRule の修正
 	/ でアクセスしたら、sh.php に転送する設定

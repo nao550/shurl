@@ -1,5 +1,5 @@
 
-   <div class="cntainer">
+   <div class="cntainer" style="margin-top: 50px;">
      <div class="row">
        <div class="span3"></div>
        <div class="span6">
@@ -10,7 +10,7 @@
 	 <div class="control-group">
 	   <label class="control-label" for="org_url">URL</label>
 	   <div class="controls">
-	     <input type="text" name="org_url" value="{$org_url}" placeholder="http://www.example.com"/>
+	     <input class="input-xlarge" type="text" name="org_url" value="{$org_url}" placeholder="http://www.example.com"/>
 	     {if isset($err_url)}
 	       {$err_url}
 	     {/if}
@@ -18,7 +18,7 @@
 	 </div>
 
 	 <div class="control-group">
-	   <label class="control-label" for="shchar">短縮文字<label>
+	   <label class="control-label" for="shchar">短縮文字</label>
 	   <div class="controls">
 	     <input type="text" name="shchar" value="{$shchar}" placeholder="non or over 5 character"/>
 	     {if isset($err_shchar)}
@@ -45,7 +45,7 @@
 	   <div class="controls">
 	     <input type="hidden" name="mode" value="gen" />
 	     <input type="submit" class="btn" value="生成する" />
-	     <input type="reset" class="btn" value="リセット" />
+	     <a href="./sh.php?mode=first&shchar=&shurl=" class="btn">リセット</a>
 	   </div>
 	 </div>
        </form>
