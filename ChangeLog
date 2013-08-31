@@ -1,3 +1,11 @@
+2013-08-31  IKENO Naoki  <nao@kyo-to.net>
+
+	* .htaccess: 
+	RewriteRule の修正
+	/ でアクセスしたら、sh.php に転送する設定
+	/ アクセスしたときに、""で shurl を開こうとするのを修正する
+	→ mode=first のチェックを追加して修正
+
 2013-08-22  IKENO Naoki  <nao@kyo-to.net>
 
 	* sh.php: 

@@ -16,7 +16,9 @@ $smarty = new Smarty();
 */
 
 if( isset( $_GET['mode'] )){
-    if( $_GET['mode'] == 'gen' ){
+    if( $_GET['mode'] == 'first' ){
+        $mode = $_GET['mode'];
+    } elseif( $_GET['mode'] == 'gen' ){
         $mode = $_GET['mode'];
     } elseif( $_GET['mode'] == 'error' ){
         $mode = $_GET['mode'];
@@ -102,12 +104,17 @@ if ( $mode == 'first' ){
     print( '<!-- gen mode  -->' );
 } elseif ( $mode == 'shurl' ){
     /*
-      shurl を受け取った
+      mode=shurl を受け取った
       GET で shchar を取り出し
+      NULLかどうかチェック、nullなら mode=first で開きなおし
       shchar で dat を検索
       dat になればエラー画面
       dat にあれば location  hogeで移動
     */
+
+    if( $_GET['shchar'] == "" ){
+        header('Location: ./sh.php?mode=first' );
+   }
 
     $datfile = new DatFile;
 
