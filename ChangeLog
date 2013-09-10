@@ -1,3 +1,8 @@
+2013-09-10  IKENO Naoki  <nao@kyo-to.net>
+
+	* sh.php (if): 
+	debug ようのコードを追加
+
 2013-08-31  IKENO Naoki  <nao@kyo-to.net>
 
 	* sh.php: 
@@ -7,7 +12,7 @@
 	RewriteRule の修正
 	/ でアクセスしたら、sh.php に転送する設定
 	/ アクセスしたときに、""で shurl を開こうとするのを修正する
-	→ mode=first のチェックを追加して修正
+	→ mode=first のチェックを追加して修正: don(130831)
 
 2013-08-22  IKENO Naoki  <nao@kyo-to.net>
 

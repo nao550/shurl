@@ -1,9 +1,8 @@
 
-   <div class="cntainer" style="margin-top: 50px;">
-     <div class="row">
-       <div class="span3"></div>
-       <div class="span6">
-       <h1 class="text-center">短縮URL</h1>
+   <div class="cntainer-fluid" style="margin-top: 50px;">
+     <div class="row-fluid">
+       <div class="span3" style="background-color:blue;"></div>
+       <div class="span6" style="background-color:red;">
 
        <form action="sh.php" method="GET">
        <div class="form-horizontal">
@@ -14,8 +13,8 @@
 	     {if isset($err_url)}
 	       {$err_url}
 	     {/if}
-	   </div>
-	 </div>
+	   </div><!-- controls -->
+	 </div><!-- control-group --->
 
 	 <div class="control-group">
 	   <label class="control-label" for="shchar">短縮文字</label>
@@ -24,21 +23,21 @@
 	     {if isset($err_shchar)}
 	       {$err_shchar}
 	     {/if}
-	   </div>
-	 </div>
-
+	   </div><!-- controls -->
+	 </div><!-- control-group -->
+	 
 	 {if isset($shurl)}
 	 <div class="control-group">
 	   <label class="control-label" for="shurl">短縮URL</label>
 	   <div class="controls">
 	     <a href="{$shurl}">{$shurl}</a>
-           </div>
+           </div><!-- ccontrols -->
 	   {if isset($err_shurl)}
 	   <div class="controls">
 	     {$err_shurl}
-	   </div>
+	   </div><!-- controls -->
 	   {/if}
-	 </div>
+	 </div><!-- control-group -->
 	 {/if}
 
 	 <div class="control-group">
@@ -46,12 +45,11 @@
 	     <input type="hidden" name="mode" value="gen" />
 	     <input type="submit" class="btn" value="生成する" />
 	     <a href="./sh.php?mode=first&shchar=&shurl=" class="btn">リセット</a>
-	   </div>
-	 </div>
+	   </div><!-- controls -->
+	 </div><!-- controls-group -->
+       </div><!-- form-horizonal_ -->
        </form>
-
-       </div>
-       <div class="span3"></div>
-     </div>
-
+       </div><!-- class6 -->
+     <div class="span3" style="background-color:blue;"></div>
+   </div>
 

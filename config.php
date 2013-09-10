@@ -1,6 +1,7 @@
 <?php
 // Shorten URL configuretion file.
 
+define( 'VERSION', '0.01' ); // Version number.
 define( 'DEBUG', '1' ); // Debug Mode  1:on 0:off
 
 define( 'BASEURL', 'http://www.kyo-to.net/~nao/shurl/sh.php?mode=shurl&shchar=' ); // shchar をつなげるショートカット用URL

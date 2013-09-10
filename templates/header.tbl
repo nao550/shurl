@@ -10,3 +10,6 @@
     <link rel="stylesheet" href="base.css" />
   </head>
   <body>
+    <div id="header">
+      <h1 class="text-center" style="margin-bottom:30px;" >短縮URL生成</h1>
+    </div>

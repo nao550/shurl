@@ -14,6 +14,7 @@ $smarty = new Smarty();
 ゲットで変数が来ているかどうかチェック
  変数がなければ標準画面
  変数があれば変数をチェック
+   mode=first で初期画面
    mode=gen で shurl 生成画面
    mode=error でエラー発生したので再入力画面
    mode=shurl で shurl を受け取ったと解釈
@@ -55,9 +56,7 @@ if ( $mode == 'first' ){
       shchar の長さチェック
       エラーで mode=error で戻す
       shchar なければ、org_url,time より hash で shchar 生成
-
       org_url,shchar,day を dat へ登録
-
       shurl の画面を表示
     */
 
@@ -78,12 +77,11 @@ if ( $mode == 'first' ){
         $shchar = $_GET['shchar'];
     }
 
-
     $datfile = new DatFile;
 
     $org_url = $datfile->GetURL( $shchar );
     if( isset( $org_url )){
-        // shchar が設定されているので、org_url とか表示してエラー
+        // shchar がすでに設定されているので、org_url とか表示してエラー
         $shurl = BASEURL . $shchar;
         $smarty->display( 'header.tbl' );
         $smarty->assign( 'minchar', MINSHCHAR );
