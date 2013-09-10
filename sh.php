@@ -1,9 +1,13 @@
 <?php
-ini_set( 'display_error', 1 );  // Show error message.
 
 require( './config.php' );
 require( './datclass.inc' );
 require_once( './libs/Smarty.class.php' );
+
+if( DEBUG ){
+    ini_set( 'display_error', 1 );  // Show error message.
+}
+
 $smarty = new Smarty();
 
 /*
