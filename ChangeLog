@@ -1,3 +1,10 @@
+2013-10-18  IKENO Naoki  <nao@kyo-to.net>
+
+	* .htaccess
+	config.php
+	をデフォルトのものがリポジトリにあるように変更
+	ローカルのファイルは変更する必要がなくなる
+
 2013-09-10  IKENO Naoki  <nao@kyo-to.net>
 
 	* sh.php (if): 
