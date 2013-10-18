@@ -1,8 +1,8 @@
 
    <div class="cntainer-fluid" style="margin-top: 50px;">
      <div class="row-fluid">
-       <div class="span3" style="background-color:blue;"></div>
-       <div class="span6" style="background-color:red;">
+       <div class="span3"></div>
+       <div class="span6">
 
        <form action="sh.php" method="GET">
        <div class="form-horizontal">
@@ -50,6 +50,6 @@
        </div><!-- form-horizonal_ -->
        </form>
        </div><!-- class6 -->
-     <div class="span3" style="background-color:blue;"></div>
+     <div class="span3"></div>
    </div>
 
